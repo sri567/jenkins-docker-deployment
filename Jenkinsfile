@@ -6,7 +6,13 @@ agent any
   stages{
     stage("mavn war file"){
       steps{
-       sh ''' mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4 '''
+       sh ''' mvn package '''
+      }
+    }
+    
+    stage("archive"){
+      steps{
+      archiveArtifacts artifacts: 'target/*.jar'
       }
     }
   }
