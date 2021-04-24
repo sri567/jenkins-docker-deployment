@@ -18,7 +18,7 @@ agent any
     
     stage("tomcat -deploy"){
       steps{
-     sh ''' sudo cp /var/lib/jenkins/workspace/Demo/target/demoart/*.war /opt/apache-tomcat-8.5.65/webapps '''
+     sh ''' sudo cp /var/lib/jenkins/workspace/Demo/target/demoart/demoart.war /opt/apache-tomcat-8.5.65/webapps/ '''
 
       }
       }
