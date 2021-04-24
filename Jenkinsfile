@@ -1,7 +1,7 @@
 pipeline{
 agent any
   environment{
-    PATH="/opt/apache-maven-3.6.3/bin:$PATH"
+    PATH="/opt/apache-maven-3.6.3/bin:/opt/apache-tomcat-8.5.65/bin:$PATH"
   }
   stages{
     stage("mavn war file"){
