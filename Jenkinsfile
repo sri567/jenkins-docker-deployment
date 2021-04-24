@@ -10,11 +10,16 @@ agent any
       }
     }
     
-    stage("archive"){
+    
+    
+    stage("tomcat stop") {
       steps{
-      archiveArtifacts artifacts: 'target/*.war'
+        
+        sh ''' sudo ./shutdown.sh '''
       }
     }
+    
+    
     
     stage("tomcat -deploy"){
       steps{
@@ -22,6 +27,13 @@ agent any
 
       }
       }
+    
+    stage("tomcat start") {
+      steps{
+        
+        sh ''' sudo ./startup.sh '''
+      }
+    }
     
   }
 }
