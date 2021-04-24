@@ -1,7 +1,7 @@
 pipeline{
 agent any
   environment{
-    PATH="/home/ec2-user/apache-maven-3.6.3/bin:$PATH"
+    PATH="/opt/apache-maven-3.6.3/bin:$PATH"
   }
   stages{
     stage("mavn war file"){
@@ -12,7 +12,7 @@ agent any
     
     stage("archive"){
       steps{
-      archiveArtifacts artifacts: 'target/*.jar'
+      archiveArtifacts artifacts: 'target/*.war'
       }
     }
   }
