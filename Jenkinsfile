@@ -15,7 +15,7 @@ agent any
     stage("tomcat stop") {
       steps{
         
-        sh ''' sudo ./opt/apache-tomcat-8.5.65/bin/shutdown.sh '''
+        sh ''' sudo /opt/apache-tomcat-8.5.65/bin/shutdown.sh '''
       }
     }
     
@@ -31,7 +31,7 @@ agent any
     stage("tomcat start") {
       steps{
         
-        sh ''' sudo ./opt/apache-tomcat-8.5.65/bin/startup.sh '''
+        sh ''' sudo /opt/apache-tomcat-8.5.65/bin/startup.sh '''
       }
     }
     
