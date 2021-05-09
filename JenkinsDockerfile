@@ -13,6 +13,15 @@ sh ''' sudo docker build -t demoart . '''
 }
 }
 
+stage("docker push"){
+steps{
+withDockerRegistry(credentialsId: 'sheelademo', url: 'https://hub.docker.com/?ref=login') {
+   demoart.push() 
+}
+}
+}
+
+
 }
 }
 
