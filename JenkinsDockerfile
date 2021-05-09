@@ -21,10 +21,12 @@ sh ''' docker tag helloworldapp sheelademo/helloworldapp:latest '''
 
 stage("docker push"){
 steps{
-
-   sh ''' docker push sheelademo/helloworldapp:latest '''  
-
-
+script{
+withDockerRegistry(credentialsId: 'sheelademo', url: 'https://registry.hub.docker.com') {
+   
+   sh '''  docker push sheelademo/helloworldapp:latest '''  
+}
+}
 }
 }
 
