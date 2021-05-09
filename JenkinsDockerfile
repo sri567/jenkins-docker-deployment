@@ -9,15 +9,21 @@ copyArtifacts filter: 'target/demoart.war', fingerprintArtifacts: true, projectN
 
 stage("docker build"){
 steps{
-sh ''' sudo docker build -t demoart . '''
+sh ''' sudo docker build -t helloworldapp . '''
+}
+}
+
+stage("docker tag image"){
+steps{
+sh ''' docker tag helloworldapp sheelademo/helloworldapp '''
 }
 }
 
 stage("docker push"){
 steps{
 withDockerRegistry(credentialsId: 'sheelademo', url: 'https://registry.hub.docker.com') {
-   sh ''' docker tag demoart sheelademo/demoart '''
-   sh ''' docker push sheelademo/demoart '''  
+   
+   sh ''' docker push sheelademo/helloworldapp '''  
 }
 }
 }
