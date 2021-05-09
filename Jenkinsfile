@@ -13,7 +13,7 @@ agent any
     
       stage("archive"){
       steps{
-      archiveArtifacts artifacts: 'target/demoart-*.war'
+      archiveArtifacts artifacts: 'target/demoart*.war'
         }
     }
     
