@@ -15,16 +15,16 @@ sh ''' sudo docker build -t helloworldapp . '''
 
 stage("docker tag image"){
 steps{
-sh ''' docker tag helloworldapp sheelademo/helloworldapp '''
+sh ''' docker tag helloworldapp sheelademo/helloworldapp:latest '''
 }
 }
 
 stage("docker push"){
 steps{
 script{
-withDockerRegistry(credentialsId: 'sheelademo', url: 'https://registry.hub.docker.com/') {
+withDockerRegistry(credentialsId: 'sheelademo', url: 'https://registry.hub.docker.com') {
    
-   sh ''' docker push sheelademo/helloworldapp '''  
+   sh ''' docker push sheelademo/helloworldapp:latest '''  
 }
 }
 }
