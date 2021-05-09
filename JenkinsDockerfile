@@ -24,7 +24,7 @@ steps{
 script{
 withDockerRegistry(credentialsId: 'sheelademo', url: 'https://registry.hub.docker.com') {
    
-   sh ''' docker push sheelademo/helloworldapp:latest '''  
+   sh ''' sudo docker push sheelademo/helloworldapp:latest '''  
 }
 }
 }
