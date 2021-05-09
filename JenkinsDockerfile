@@ -15,13 +15,12 @@ sh ''' sudo docker build -t demoart . '''
 
 stage("docker push"){
 steps{
-script{
-   sh ''' docker tag demoart sheelademo/demoart '''
+withDockerRegistry(credentialsId: 'sheelademo', url: 'https://hub.docker.com/?ref=login') {
+   sh ''' docker tag sheelademo/demoart '''
    sh ''' docker push demoart '''  
 }
 }
 }
-
 
 }
 }
