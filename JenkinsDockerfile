@@ -17,7 +17,7 @@ stage("docker push"){
 steps{
 withDockerRegistry(credentialsId: 'sheelademo', url: 'https://registry.hub.docker.com') {
    sh ''' docker tag demoart sheelademo/demoart '''
-   sh ''' docker push demoart '''  
+   sh ''' docker push sheelademo/demoart '''  
 }
 }
 }
