@@ -9,7 +9,7 @@ copyArtifacts filter: 'target/demoart.war', fingerprintArtifacts: true, projectN
 
 stage("docker build"){
 steps{
-sh ''' docker build -t --name=demoart . '''
+sh ''' docker build -t demoart . '''
 }
 }
 
