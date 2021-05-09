@@ -15,7 +15,7 @@ sh ''' sudo docker build -t demoart . '''
 
 stage("docker push"){
 steps{
-withDockerRegistry(credentialsId: 'sheelademo', url: 'https://hub.docker.com') {
+withDockerRegistry(credentialsId: 'sheelademo', url: 'https://registry.hub.docker.com') {
    sh ''' docker tag sheelademo/demoart '''
    sh ''' docker push demoart '''  
 }
