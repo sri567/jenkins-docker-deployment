@@ -1,1 +1,12 @@
+pipeline{
+agent any
+stages{
+stage("copy artiface"){
+steps{
+copyArtifacts filter: 'demoart.war', fingerprintArtifacts: true, projectName: 'Warfile', selector: lastSuccessful()
+}
+}
+
+}
+}
 
