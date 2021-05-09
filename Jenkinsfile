@@ -11,29 +11,5 @@ agent any
     }
     
     
-    
-    stage("tomcat stop") {
-      steps{
-        
-        sh ''' sudo /opt/apache-tomcat-8.5.65/bin/shutdown.sh '''
-      }
-    }
-    
-    
-    
-    stage("tomcat -deploy"){
-      steps{
-     sh ''' sudo cp /var/lib/jenkins/workspace/Demo/target/demoart.war /opt/apache-tomcat-8.5.65/webapps/ '''
-
-      }
-      }
-    
-    stage("tomcat start") {
-      steps{
-        
-        sh ''' sudo /opt/apache-tomcat-8.5.65/bin/startup.sh '''
-      }
-    }
-    
   }
 }
