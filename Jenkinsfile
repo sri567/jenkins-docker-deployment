@@ -8,6 +8,13 @@ agent any
       steps{
        sh ''' mvn package '''
       }
+      
+    }
+    
+      stage("archive"){
+      steps{
+      archiveArtifacts artifacts: 'target/demoart-*.war'
+        }
     }
     
     
