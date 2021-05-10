@@ -15,7 +15,7 @@ sh ''' sudo docker build -t helloworldapp . '''
 
 stage("docker tag image"){
 steps{
-sh ''' docker tag helloworldapp sheelademo/helloworldapp:latest '''
+sh ''' docker tag helloworldapp sheelademo/sheeladocker/helloworldapp:latest '''
 }
 }
 
@@ -24,7 +24,7 @@ steps{
 script{
 withDockerRegistry(credentialsId: 'sheelademo', url: 'https://registry.hub.docker.com') {
    
-   sh '''  docker push sheelademo/helloworldapp:latest '''  
+   sh '''  docker push sheelademo/sheeladocker/helloworldapp:latest '''  
 }
 }
 }
