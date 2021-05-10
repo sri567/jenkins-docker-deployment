@@ -22,7 +22,7 @@ sh ''' docker tag helloworldapp sheelademo/sheeladocker/helloworldapp '''
 stage("docker push"){
 steps{
 script{
-withDockerRegistry(credentialsId: 'sheelademo', url: 'docker.io') {
+withDockerRegistry(credentialsId: 'sheelademo', url: 'https://index.docker.io') {
    
    sh '''  docker push sheelademo/sheeladocker/helloworldapp '''  
 }
