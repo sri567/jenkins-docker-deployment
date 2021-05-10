@@ -19,14 +19,20 @@ sh ''' docker tag helloworldapp sheelademo/sheeladocker/helloworldapp '''
 }
 }
 
-stage("docker push"){
+stage("docker login"){
 steps{
 script{
 withDockerRegistry(credentialsId: 'sheelademo', url: 'https://index.docker.io') {
    
-   sh '''  docker push sheelademo/sheeladocker/helloworldapp '''  
+   sh '''  echo successfully logged into docker '''  
 }
 }
+}
+}
+
+stage("docker push"){
+steps{
+  sh '''  docker push sheelademo/sheeladocker/helloworldapp '''
 }
 }
 
