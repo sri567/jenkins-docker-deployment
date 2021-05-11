@@ -8,9 +8,9 @@ EXPOSE 8080
 COPY target/demoart.war /opt/tomcat/webapps/
 CMD /opt/tomcat/bin/startup.sh && while true; do sleep 1000 ; done
 
-RUN usermod -aG docker jenkins
+RUN usermod -aG docker ec2-user
 
 RUN newgrp docker
 
 # Switch to the regular jenkins user
-USER jenkins
+USER ec2-user
