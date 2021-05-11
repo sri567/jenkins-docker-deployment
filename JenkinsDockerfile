@@ -13,21 +13,14 @@ sh ''' sudo docker build -t sheelademo/helloworldapp . '''
 }
 }
 
-/* stage("docker tag image"){
-steps{
-sh ''' docker tag helloworldapp sheelademo/sheeladocker/helloworldapp '''
-}
-}
 
-*/
-
-stage("docker login"){
+stage("docker push"){
 steps{
-script{
+
 withDockerRegistry(credentialsId: 'sheelademo', url: 'https://index.docker.io') {
    
-   sh '''  echo successfully logged into docker '''  
-}
+sh '''  docker push sheelademo/helloworldapp '''
+
 }
 }
 }
@@ -40,4 +33,6 @@ steps{
 
 }
 }
+
+
 
