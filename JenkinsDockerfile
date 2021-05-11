@@ -28,7 +28,7 @@ sh '''  docker push sheelademo/helloworldapp '''
 
 stage("docker push"){
 steps{
-withDockerServer([uri: 'unix:///var/run/docker.sock']) {
+withDockerServer([uri: 'unix:///var/run/docker.sock',credentialsId: 'sheelademo']) {
 withDockerRegistry(credentialsId: 'sheelademo', url: 'https://index.docker.io') { 
 sh '''  docker build -t helloworldapp . '''
 sh '''  docker tag  helloworldapp sheelademo/helloworldapp '''
