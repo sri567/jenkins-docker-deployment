@@ -18,15 +18,15 @@ sh '''  docker tag  helloworldapp sheelademo/helloworldapp '''
 
 stage("docker push"){
 steps{
-/ * withDockerRegistry(credentialsId: 'sheelademo', url: 'https://index.docker.io') { */
-/* login manually in ec2 */
+/* withDockerRegistry(credentialsId: 'sheelademo', url: 'https://index.docker.io') { 
+ login manually in ec2 */
 
 sh '''  docker build -t helloworldapp . '''
 sh '''  docker tag  helloworldapp sheelademo/helloworldapp '''
 sh '''  docker push sheelademo/helloworldapp '''
 }
 }
-*/ } */
+// } 
 
 
 }
