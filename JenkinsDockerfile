@@ -1,4 +1,10 @@
 pipeline{
+
+environment {
+    registry = "sheelademo/helloworldapp"
+    registryCredential = ‘sheelademo’
+  }
+  
 agent any
 stages{
 stage("copy artiface"){
@@ -18,7 +24,9 @@ sh '''  docker tag  helloworldapp sheelademo/helloworldapp '''
 stage("docker push"){
 steps{
 
-withDockerRegistry(credentialsId: 'sheelademo', url: 'https://index.docker.io') {
+/* withDockerRegistry(credentialsId: 'sheelademo', url: 'https://index.docker.io') { */
+
+withDockerRegistry(registryCredential, url: 'https://index.docker.io') { 
    
 sh '''  docker push sheelademo/helloworldapp '''
 
