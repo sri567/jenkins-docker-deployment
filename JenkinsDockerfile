@@ -16,16 +16,22 @@ sh '''  docker tag  helloworldapp sheelademo/helloworldapp '''
 } */
 
 
-stage("docker push"){
+/*  stage("docker push"){
 steps{
-/* withDockerRegistry(credentialsId: 'sheelademo', url: 'https://index.docker.io') { */
-
-script{
-withDockerRegistry(credentialsId: 'sheelademo', url: 'https://index.docker.io') {
+withDockerRegistry(credentialsId: 'sheelademo', url: 'https://index.docker.io') { 
 sh '''  docker build -t helloworldapp . '''
 sh '''  docker tag  helloworldapp sheelademo/helloworldapp '''
 sh '''  docker push sheelademo/helloworldapp '''
 }
+}
+} */
+
+stage("docker push"){
+steps{
+withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
+sh '''  docker build -t helloworldapp . '''
+sh '''  docker tag  helloworldapp sheelademo/helloworldapp '''
+sh '''  docker push sheelademo/helloworldapp '''
 }
 }
 }
