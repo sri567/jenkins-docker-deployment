@@ -8,7 +8,7 @@ EXPOSE 8080
 COPY target/demoart.war /opt/tomcat/webapps/
 CMD /opt/tomcat/bin/startup.sh && while true; do sleep 1000 ; done
 
-RUN usermod -aG docker ec2-user
+RUN sudo usermod -a -G docker ec2-user
 
 RUN newgrp docker
 
