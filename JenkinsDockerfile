@@ -21,14 +21,14 @@ steps{
 /* withDockerRegistry(credentialsId: 'sheelademo', url: 'https://index.docker.io') { */
 
 script{
-
+withDockerRegistry(credentialsId: 'sheelademo', url: 'https://index.docker.io') {
 sh '''  docker build -t helloworldapp . '''
 sh '''  docker tag  helloworldapp sheelademo/helloworldapp '''
 sh '''  docker push sheelademo/helloworldapp '''
 }
 }
 }
-
+}
 
 
 }
