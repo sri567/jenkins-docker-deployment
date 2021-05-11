@@ -7,9 +7,10 @@ copyArtifacts filter: 'target/demoart.war', fingerprintArtifacts: true, projectN
 }
 }
 
-stage("docker build"){
+stage("docker build and tag"){
 steps{
-sh ''' sudo docker build -t sheelademo/helloworldapp . '''
+sh '''  docker build -t helloworldapp . '''
+sh '''  docker tag  helloworldapp sheelademo/helloworldapp '''
 }
 }
 
