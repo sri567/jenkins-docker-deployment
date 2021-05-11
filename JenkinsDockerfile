@@ -28,10 +28,12 @@ sh '''  docker push sheelademo/helloworldapp '''
 
 stage("docker push"){
 steps{
-withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
+withDockerServer([uri: 'unix:///var/run/docker.sock']) {
+withDockerRegistry(credentialsId: 'sheelademo', url: 'https://index.docker.io') { 
 sh '''  docker build -t helloworldapp . '''
 sh '''  docker tag  helloworldapp sheelademo/helloworldapp '''
 sh '''  docker push sheelademo/helloworldapp '''
+}
 }
 }
 }
